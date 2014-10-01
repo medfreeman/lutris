@@ -7,7 +7,7 @@ game:
   prefix: $GAMEDIR
 installer:
 - insert-disc:
-    message: Insert Rogue Squadron CD to continue
+    message: Insert the Rogue Squadron CD to continue
     requires: rogue
 - task:
     name: wineexec
