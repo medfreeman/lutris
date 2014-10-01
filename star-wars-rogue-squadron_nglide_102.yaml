@@ -1,17 +1,17 @@
-insert-disc:
-- message: Insert Rogue Squadron CD to continue
-- requires: rogue squadron.exe
 files:
 - rogue-installer: http://github.com/medfreeman/RogueSquadron3DInstaller/raw/master/RS3DInstaller-0.9_nglide_102.exe
 exe: drive_c/Program Files/LucasArts/ROGUE/ROGUE.EXE
 runner: wine
 nocreatedir: true
 game:
-- prefix: $GAMEDIR
+  prefix: $GAMEDIR
 installer:
+- insert-disc:
+    message: Insert the Rogue Squadron CD to continue
+    requires: rogue
 - task:
     name: wineexec
-    executable: ${rogue-installer}
+    executable: rogue-installer
     args: /nocdprompt
     prefix: $GAMEDIR
     description: Installing Rogue Squadron 3D
