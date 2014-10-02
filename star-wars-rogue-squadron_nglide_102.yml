@@ -1,67 +1,72 @@
-files:
-- rogue-installer: http://github.com/medfreeman/RogueSquadron3DInstaller/raw/master/RS3DInstaller-0.9_nglide_102.exe
-exe: drive_c/Program Files/LucasArts/ROGUE/ROGUE.EXE
-runner: wine
-nocreatedir: true
-game:
-  prefix: $GAMEDIR
-installer:
-- insert-disc:
-    message: Insert the Rogue Squadron CD to continue
-    requires: rogue
-- task:
-    name: wineexec
-    executable: rogue-installer
-    args: /nocdprompt
-    prefix: $GAMEDIR
-    description: Installing Rogue Squadron 3D
-- task:
-    name: winetricks
-    app: dxdiag
-    prefix: $GAMEDIR
-- task:
-    name: winetricks
-    app: dsound
-    prefix: $GAMEDIR
-- task:
-    name: set_regedit
-    path: HKEY_CURRENT_USER\\Software\\Wine\\DllOverrides
-    key: dsound
-    value: native
-    prefix: $GAMEDIR
-    description: Enable native directsound
-- task:
-    name: set_regedit
-    path: HKEY_CURRENT_USER\\Software\\Wine\\X11 Driver
-    key: Managed
-    value: N
-    prefix: $GAMEDIR
-    description: Disable Managed windows
-- task:
-    name: set_regedit
-    path: HKEY_CURRENT_USER\\Software\\Wine\\X11 Driver
-    key: Decorated
-    value: N
-    prefix: $GAMEDIR
-    description: Disable Decorated windows
-- task:
-    name: set_regedit
-    path: HKEY_CURRENT_USER\\Software\\Wine\\X11 Driver
-    key: GrabFullscreen
-    value: Y
-    prefix: $GAMEDIR
-    description: Enable fullscreen cursor grab
-- task:
-    name: set_regedit
-    path: HKEY_CURRENT_USER\\Software\\Wine\\X11 Driver
-    key: StrictDrawOrdering
-    value: enabled
-    prefix: $GAMEDIR
-    description: Enable strict draw ordering
-- task:
-    name: set_regedit
-    path: HKEY_CURRENT_USER\\Software\\Wine
-    key: Version
-    value: win98
-    prefix: $GAMEDIR
-    description: Enable Windows 98 compatibility mode
+---
+  -
+    name: "Star Wars : Rogue Squadron"
+    version: CD (nGlide 1.02)
+    runner: wine
+    exe: drive_c/Program Files/LucasArts/ROGUE/ROGUE.EXE
+    nocreatedir: true
+    insert-disc:
+      message: Insert the Rogue Squadron CD to continue
+      requires: rogue
+    files:
+    - rogue-installer: http://github.com/medfreeman/RogueSquadron3DInstaller/raw/master/RS3DInstaller-0.9_nglide_102.exe
+    game:
+      prefix: GAMEDIR
+      version: 1.7.27
+    installer:
+    - task:
+        name: wineexec
+        executable: ${rogue-installer}
+        args: /nocdprompt
+        prefix: GAMEDIR
+        description: Installing Rogue Squadron
+    - task:
+        name: winetricks
+        app: dxdiag
+        prefix: GAMEDIR
+    - task:
+        name: winetricks
+        app: dsound
+        prefix: GAMEDIR
+    - task:
+        name: set_regedit
+        path: HKEY_CURRENT_USER\\Software\\Wine\\DllOverrides
+        key: dsound
+        value: native
+        prefix: GAMEDIR
+        description: Enable native directsound
+    - task:
+        name: set_regedit
+        path: HKEY_CURRENT_USER\\Software\\Wine\\X11 Driver
+        key: Managed
+        value: N
+        prefix: GAMEDIR
+        description: Disable Managed windows
+    - task:
+        name: set_regedit
+        path: HKEY_CURRENT_USER\\Software\\Wine\\X11 Driver
+        key: Decorated
+        value: N
+        prefix: GAMEDIR
+        description: Disable Decorated windows
+    - task:
+        name: set_regedit
+        path: HKEY_CURRENT_USER\\Software\\Wine\\X11 Driver
+        key: GrabFullscreen
+        value: Y
+        prefix: GAMEDIR
+        description: Enable fullscreen cursor grab
+    - task:
+        name: set_regedit
+        path: HKEY_CURRENT_USER\\Software\\Wine\\X11 Driver
+        key: StrictDrawOrdering
+        value: enabled
+        prefix: GAMEDIR
+        description: Enable strict draw ordering
+    - task:
+        name: set_regedit
+        path: HKEY_CURRENT_USER\\Software\\Wine
+        key: Version
+        value: win98
+        prefix: GAMEDIR
+        description: Enable Windows 98 compatibility mode
