@@ -12,7 +12,7 @@
     - rogue-installer: http://github.com/medfreeman/RogueSquadron3DInstaller/raw/master/RS3DInstaller-0.91_nglide_102.exe
     game:
       prefix: GAMEDIR
-      version: 1.7.27
+      version: 1.7.28
     installer:
     - task:
         name: wineexec
