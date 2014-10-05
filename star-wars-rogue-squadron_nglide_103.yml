@@ -9,7 +9,7 @@
       message: Insert the Rogue Squadron CD to continue
       requires: rogue
     files:
-    - rogue-installer: http://github.com/medfreeman/RogueSquadron3DInstaller/raw/master/RS3DInstaller-0.91_nglide_103.exe
+    - rogue-installer: http://github.com/medfreeman/RogueSquadron3DInstaller/raw/master/RS3DInstaller-0.92_nglide_103.exe
     game:
       prefix: GAMEDIR
       version: 1.7.28
@@ -58,7 +58,7 @@
         description: Enable fullscreen cursor grab
     - task:
         name: set_regedit
-        path: HKEY_CURRENT_USER\\Software\\Wine\\X11 Driver
+        path: HKEY_CURRENT_USER\\Software\\Wine\\Direct3D
         key: StrictDrawOrdering
         value: enabled
         prefix: GAMEDIR
